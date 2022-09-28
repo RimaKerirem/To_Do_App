@@ -61,16 +61,14 @@ tasks.addEventListener("click", function (e) {
   if (e.target.closest(".trash")) {
     deleteModal.style.top = "0";
 
-    yesBtn.onclick = () => {
+    yesBtn.onclick = () =>
       deleteFunction(e.target.closest(".task").getAttribute("data-id"));
-    };
+
     noBtn.onclick = () => (deleteModal.style.top = "-100%");
   }
 });
 
-deleteAll.onclick = () => {
-  deleteAllModal.style.top = "0";
-};
+deleteAll.onclick = () => (deleteAllModal.style.top = "0");
 
 yesAll.onclick = () => {
   tasks.innerHTML = "";
@@ -100,11 +98,8 @@ function addTasks(tasksArray) {
   tasksArray.forEach((elt) => {
     let task = document.createElement("div");
     task.setAttribute("data-id", elt.id);
-    if (elt.done) {
-      task.className = "task done";
-    } else {
-      task.className = "task";
-    }
+
+    task.className = elt.done ? "task done" : "task";
 
     let text = document.createElement("div");
     text.className = "text";
